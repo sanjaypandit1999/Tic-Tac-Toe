@@ -35,14 +35,17 @@ public class TicTacToe {
         return boardCells[index] == ' ';
     }
     public static void makeMoveForEmptyCells(Scanner scanner) {
-        System.out.println("Player's Turn : ");
-        int movePlayer = scanner.nextInt();
-        if (movePlayer == 0 || movePlayer > 10)
-            System.out.println("INVALID INPUT!!!");
-        else if (isCellAvailable(board, movePlayer)) {
-            board[movePlayer] = playerChoice;
-        } else
-            System.out.println("Position is taken");
+        while(true) {
+            System.out.println("Player's Turn : ");
+            int movePlayer = scanner.nextInt();
+            if (movePlayer == 0 || movePlayer > 10)
+                System.out.println("INVALID INPUT!!!");
+            else if (isCellAvailable(board, movePlayer)) {
+                board[movePlayer] = playerChoice;
+            } else
+                System.out.println("Position is taken");
+            displayBoard();
+        }
     }
 
 
@@ -52,6 +55,5 @@ public class TicTacToe {
         chooseLetter(sc);
         displayBoard();
         makeMoveForEmptyCells(sc);
-        displayBoard();
     }
 }
